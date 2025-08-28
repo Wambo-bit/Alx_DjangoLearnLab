@@ -1,5 +1,5 @@
 <!-- Commands used -->
-Book.delete()
+book.delete()
 
 
 <!-- Comments gotten from creating a book. -->
