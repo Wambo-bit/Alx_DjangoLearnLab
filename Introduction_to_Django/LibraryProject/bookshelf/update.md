@@ -1,5 +1,5 @@
 <!-- Commands used -->
-Book.title = "Nighteen Eighty-Four"
+book.title = "Nighteen Eighty-Four"
 
 
 <!-- Comments gotten from creating a book. -->
