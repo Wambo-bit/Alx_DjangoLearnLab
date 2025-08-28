@@ -1,5 +1,5 @@
 <!-- Commands used -->
-t1 = book.objects.create()
+t1 = book.objects.create(title="1984", author="George Orwell", publication_year=1949)
 
 
 <!-- Comments gotten from creating a book. -->
