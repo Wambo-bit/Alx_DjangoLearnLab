@@ -1,5 +1,5 @@
 <!-- Commands used -->
-from bookshelf.models import book
+from bookshelf.models import Book
 book.delete()
 
 
