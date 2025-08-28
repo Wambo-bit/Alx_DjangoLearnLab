@@ -1,5 +1,5 @@
 <!-- Commands used -->
-t1.delete()
+Book.delete()
 
 
 <!-- Comments gotten from creating a book. -->
