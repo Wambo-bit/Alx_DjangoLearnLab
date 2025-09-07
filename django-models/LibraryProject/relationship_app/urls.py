@@ -1,6 +1,8 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 from . import views  # Import the full views module
+from django.contrib.auth.decorators import permission_required
+
 
 urlpatterns = [
     path('books/', views.book_list, name='book_list'),

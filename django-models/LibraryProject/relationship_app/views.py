@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test, permission_required
 from .models import Book, Library
 from .forms import BookForm
+from django.contrib.auth.decorators import permission_required
+
 
 # --- Basic Views ---
 def book_list(request):
