@@ -13,10 +13,18 @@ class Author(models.Model):
 # Book model
 class Book(models.Model):
     title = models.CharField(max_length=200)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)  # Many books can have one author
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    published_date = models.DateField(null=True, blank=True)  # Add this line
 
     def __str__(self):
         return self.title
+    class Meta:
+        permissions = [
+            ("can_add_book", "Can add book"),
+            ("can_change_book", "Can change book"),
+            ("can_delete_book", "Can delete book"),
+        ]
+
 
 # Library model
 class Library(models.Model):
@@ -33,6 +41,7 @@ class Librarian(models.Model):
 
     def __str__(self):
         return self.name
+
 # Define choices for roles
 ROLE_CHOICES = [
     ('Admin', 'Admin'),
@@ -48,8 +57,8 @@ class UserProfile(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.role}"
 
-
 # Signal to automatically create UserProfile when a User is created
+@receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
