@@ -88,9 +88,10 @@ def librarian_for_library(library_name):
     """
     try:
         lib = Library.objects.get(name=library_name)
-    except Library.DoesNotExist:
+        return Librarian.objects.get(library=lib)
+    except (Library.DoesNotExist, Librarian.DoesNotExist):
         return None
-    return getattr(lib, "librarian", None)
+
 
 
 # -- a small demo you can run directly --
