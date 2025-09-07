@@ -15,6 +15,7 @@ class Book(models.Model):
         on_delete=models.CASCADE,
         related_name='books'
     )
+    publication_year = models.IntegerField(null=True, blank=True)  # 👈 Added field
 
     def __str__(self):
         return self.title
