@@ -10,7 +10,6 @@ from .forms import BookForm
 # --------------------
 # Basic Views
 # --------------------
-
 def book_list(request):
     books = Book.objects.all()
     return render(request, 'relationship_app/list_books.html', {'books': books})
@@ -42,7 +41,6 @@ def register_view(request):
 # --------------------
 # Role-Based Access
 # --------------------
-
 def is_admin(user):
     return hasattr(user, 'userprofile') and user.userprofile.role == 'Admin'
 
@@ -67,7 +65,6 @@ def member_view(request):
 # --------------------
 # Book CRUD with Permissions
 # --------------------
-
 @permission_required('relationship_app.can_add_book')
 def add_book(request):
     if request.method == 'POST':
