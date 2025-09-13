@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 # bookshelf/models.py
@@ -9,3 +10,12 @@ class Book(models.Model):
 
     def __str__(self):
         return f"{self.title} ({self.publication_year}) by {self.author}"
+class CustomUser(AbstractUser):
+    date_of_birth = models.DateField(null=True, blank=True)
+    profile_photo = models.ImageField(upload_to="profile_photos/", null=True, blank=True)
+
+    class Meta:
+        permissions = [
+            ("can_create", "Can create new objects"),
+            ("can_delete", "Can delete objects"),
+        ]
