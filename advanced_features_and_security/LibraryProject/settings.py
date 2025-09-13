@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    #'bookshelf',
+    'LibraryProject.bookshelf',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,6 +77,8 @@ LOGOUT_REDIRECT_URL = 'login'      # after logout
 
 # Use the custom user model
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
