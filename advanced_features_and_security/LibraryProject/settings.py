@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-_ukd(tqfs9r*bl=sw7bhtg^g^-=xbqd*crdc=u0*cqi()%eiac
 DEBUG = False 
 
 # Define which hosts are allowed to connect to this Django app
-ALLOWED_HOSTS = ['muthimamary.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['muthimamary.com', 'www.muthimamary.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -97,6 +97,15 @@ DATABASES = {
     }
 }
 
+# Redirect all HTTP requests to HTTPS
+# This forces secure (HTTPS) connections for all views.
+SECURE_SSL_REDIRECT = True
+
+# If your Django site is behind a reverse proxy (nginx, load balancer),
+# ensure the proxy forwards the original scheme. Then use SECURE_PROXY_SSL_HEADER:
+# For example, nginx should set: proxy_set_header X-Forwarded-Proto $scheme;
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 # Browser security protections
 SECURE_BROWSER_XSS_FILTER = True          # Enables XSS filtering # Enables the browser’s built-in XSS protection
 X_FRAME_OPTIONS = 'DENY'                  # Prevent clickjacking # Prevents browsers from rendering pages in a frame (clickjacking protection)
@@ -146,6 +155,11 @@ STATICFILES_DIRS = [
 ]
 AUTH_USER_MODEL = "bookshelf.CustomUser"
 
+# Environment toggle example (safe for dev):
+if DEBUG:
+    SECURE_SSL_REDIRECT = False
+    SECURE_HSTS_SECONDS = 0
+
 # Media files (uploaded files like profile photos)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -153,9 +167,16 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 # Optional: HSTS (HTTP Strict Transport Security)
-SECURE_HSTS_SECONDS = 3600                # Enforces that browsers only connect via HTTPS for the specified time (in seconds)
+SECURE_HSTS_SECONDS = 315336000                # Enforces that browsers only connect via HTTPS for the specified time (in seconds)
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True   # Applies HSTS policy to all subdomains as well
 SECURE_HSTS_PRELOAD = True       # Allows the domain to be included in browsers' preloaded HSTS lists
+
+# Referrer policy to limit how much referrer information is sent
+SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+
+SESSION_COOKIE_HTTPONLY = True   # reduces JavaScript access to session cookie
+# CSRF_COOKIE_HTTPONLY remains False by default to allow client-side frameworks to access CSRF token if needed.
+
 
 # Example CSP policy
 CSP_DEFAULT_SRC = ("'self'",)
