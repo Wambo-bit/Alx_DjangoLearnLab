@@ -22,10 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-_ukd(tqfs9r*bl=sw7bhtg^g^-=xbqd*crdc=u0*cqi()%eiac'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# SECURITY SETTINGS
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: don't run with debug turned on in production!
+
+# Debug mode should always be False in production to prevent leaking sensitive information
+DEBUG = False 
+
+# Define which hosts are allowed to connect to this Django app
+ALLOWED_HOSTS = ['muthimamary.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -40,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #'relationship_app',
     'accounts',
+    'csp',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
 
 ROOT_URLCONF = 'LibraryProject.urls'
@@ -90,6 +97,14 @@ DATABASES = {
     }
 }
 
+# Browser security protections
+SECURE_BROWSER_XSS_FILTER = True          # Enables XSS filtering # Enables the browser’s built-in XSS protection
+X_FRAME_OPTIONS = 'DENY'                  # Prevent clickjacking # Prevents browsers from rendering pages in a frame (clickjacking protection)
+SECURE_CONTENT_TYPE_NOSNIFF = True        # Prevent MIME-type sniffing # Prevents the browser from MIME-sniffing (treating non-HTML files as HTML)
+
+# Cookies only over HTTPS
+CSRF_COOKIE_SECURE = True # Ensure CSRF cookies are only sent over HTTPS
+SESSION_COOKIE_SECURE = True
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -136,5 +151,16 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
+# Optional: HSTS (HTTP Strict Transport Security)
+SECURE_HSTS_SECONDS = 3600                # Enforces that browsers only connect via HTTPS for the specified time (in seconds)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True   # Applies HSTS policy to all subdomains as well
+SECURE_HSTS_PRELOAD = True       # Allows the domain to be included in browsers' preloaded HSTS lists
+
+# Example CSP policy
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = ("'self'",)
+CSP_STYLE_SRC = ("'self'", 'https://fonts.googleapis.com')
+CSP_FONT_SRC = ("'self'", 'https://fonts.gstatic.com')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
