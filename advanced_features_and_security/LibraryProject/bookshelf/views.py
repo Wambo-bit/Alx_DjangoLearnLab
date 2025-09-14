@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import permission_required
 from .models import Book
 from .forms import BookForm, ExampleForm
 from django.db.models import Q
+from .forms import ExampleForm
 
 # List all books
 # Lists all books - safe because Django auto-escapes output in templates
