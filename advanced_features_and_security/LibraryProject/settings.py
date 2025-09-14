@@ -129,7 +129,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-AUTH_USER_MODEL = 'bookshelf.CustomUser'
+AUTH_USER_MODEL = "bookshelf.CustomUser"
 
 # Media files (uploaded files like profile photos)
 MEDIA_URL = '/media/'
