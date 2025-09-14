@@ -77,6 +77,7 @@ LOGOUT_REDIRECT_URL = 'login'      # after logout
 
 # Use the custom user model
 AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = 'bookshelf.CustomUser'
 
 
 
