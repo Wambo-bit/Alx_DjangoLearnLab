@@ -80,6 +80,11 @@ LOGOUT_REDIRECT_URL = 'login'      # after logout
 AUTH_USER_MODEL = 'accounts.CustomUser'
 AUTH_USER_MODEL = 'bookshelf.CustomUser'
 
+# Environment toggle example (safe for dev):
+if DEBUG:
+    SECURE_SSL_REDIRECT = False
+    SECURE_HSTS_SECONDS = 0
+
 
 
 # Database
