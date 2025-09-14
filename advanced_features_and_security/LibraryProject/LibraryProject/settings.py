@@ -162,5 +162,8 @@ CSP_SCRIPT_SRC = ("'self'",)
 CSP_STYLE_SRC = ("'self'", 'https://fonts.googleapis.com')
 CSP_FONT_SRC = ("'self'", 'https://fonts.gstatic.com')
 
+# Trust the 'X-Forwarded-Proto' header set by the reverse proxy (e.g., Nginx/Heroku)
+# This ensures Django knows when a request was originally HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

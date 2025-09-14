@@ -174,6 +174,10 @@ SECURE_HSTS_PRELOAD = True       # Allows the domain to be included in browsers'
 # Referrer policy to limit how much referrer information is sent
 SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 
+# Trust the 'X-Forwarded-Proto' header set by the reverse proxy (e.g., Nginx/Heroku)
+# This ensures Django knows when a request was originally HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 SESSION_COOKIE_HTTPONLY = True   # reduces JavaScript access to session cookie
 # CSRF_COOKIE_HTTPONLY remains False by default to allow client-side frameworks to access CSRF token if needed.
 
