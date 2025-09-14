@@ -152,7 +152,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 # Optional: HSTS (HTTP Strict Transport Security)
-SECURE_HSTS_SECONDS = 315336000                # Enforces that browsers only connect via HTTPS for the specified time (in seconds)
+SECURE_HSTS_SECONDS = 31536000                # Enforces that browsers only connect via HTTPS for the specified time (in seconds)
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True   # Applies HSTS policy to all subdomains as well
 SECURE_HSTS_PRELOAD = True       # Allows the domain to be included in browsers' preloaded HSTS lists
 
