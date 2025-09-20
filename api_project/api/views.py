@@ -1,8 +1,11 @@
 # api/views.py
 from rest_framework import generics, viewsets
-from rest_framework.permissions import AllowAny
+#from rest_framework.permissions import AllowAny
 from .models import Book
 from .serializers import BookSerializer
+from .permissions import IsAdminOrReadOnly
+from rest_framework.permissions import IsAuthenticated  # for list view
+
 
 class BookList(generics.ListAPIView):
     """
@@ -10,7 +13,7 @@ class BookList(generics.ListAPIView):
     """
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
 class BookViewSet(viewsets.ModelViewSet):
     """
@@ -24,4 +27,5 @@ class BookViewSet(viewsets.ModelViewSet):
     """
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [AllowAny]  # dev: public; change for production
+    permission_classes =[IsAdminOrReadOnly]
+ # dev: public; change for production
