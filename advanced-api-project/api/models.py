@@ -4,6 +4,7 @@ from django.db import models
 # Author model stores information about book authors.
 class Author(models.Model):
     name = models.CharField(max_length=100)  # Author's full name
+    birth_year = models.IntegerField(null=True, blank=True)  # Author's birth year
 
     def __str__(self):
         return self.name

@@ -32,7 +32,13 @@ It focuses on building a flexible API with **custom serializers, generic views, 
   - Searching across `title` and `author`
   - Ordering by `title` and `publication_year`
 
+### ✅ Phase 3: Unit Testing
+- Added automated tests for API endpoints
+- Verified CRUD operations, filtering, searching, ordering
+- Ensured authentication & permission rules are enforced
+
 ---
+
 
 ## ⚙️ Installation & Setup
 
