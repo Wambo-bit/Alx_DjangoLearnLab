@@ -1,32 +1,42 @@
-# 📘 Advanced API Project – Django REST Framework
+# 📚 Advanced API Project – Django REST Framework
 
-This project demonstrates advanced **Django REST Framework (DRF)** usage with **custom serializers, nested relationships, generic views, and permissions**.  
-It is part of the **Alx_DjangoLearnLab** exercises.
-
----
-
-## 🚀 Features
-
-- **Custom Models**
-  - `Author` – represents a writer with a `name`.
-  - `Book` – represents a book with `title`, `publication_year`, and a foreign key to `Author`.
-
-- **Custom Serializers**
-  - `BookSerializer` – validates publication year (cannot be in the future).
-  - `AuthorSerializer` – includes nested books dynamically.
-
-- **Generic Views**
-  - List all books
-  - Retrieve a single book
-  - Create a new book
-  - Update an existing book
-  - Delete a book
-
-- **Permissions**
-  - Anyone can **read** (`GET` requests).
-  - Only authenticated users can **create, update, or delete**.
+This project is part of the **Alx_DjangoLearnLab** repo and demonstrates advanced API development using **Django** and **Django REST Framework (DRF)**.  
+It focuses on building a flexible API with **custom serializers, generic views, permissions, filtering, searching, and ordering**.
 
 ---
 
-## 📂 Project Structure
+## 🚀 Features Implemented
 
+### ✅ Phase 0: Project Setup
+- Created a new Django project: `advanced_api_project`
+- Added app: `api`
+- Installed and configured **Django REST Framework**
+- Created `Author` and `Book` models with relationships
+- Implemented custom serializers with nested relationships and validation
+
+### ✅ Phase 1: Custom & Generic Views
+- Added **generic views** for the Book model:
+  - List all books (`/api/books/`)
+  - Retrieve a book by ID (`/api/books/<id>/`)
+  - Create a book (`/api/books/create/`)
+  - Update a book (`/api/books/update/<id>/`)
+  - Delete a book (`/api/books/delete/<id>/`)
+- Applied **permission classes**:
+  - Authenticated users can create, update, delete
+  - Anonymous users have read-only access
+
+### ✅ Phase 2: Filtering, Searching, and Ordering
+- Integrated **django-filter** package
+- Implemented:
+  - Filtering by `title`, `author`, `publication_year`
+  - Searching across `title` and `author`
+  - Ordering by `title` and `publication_year`
+
+---
+
+## ⚙️ Installation & Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Wambo-bit>/Alx_DjangoLearnLab.git
+   cd Alx_DjangoLearnLab/advanced-api-project
