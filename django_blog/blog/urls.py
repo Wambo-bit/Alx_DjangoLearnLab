@@ -1,8 +1,9 @@
 from django.urls import path
 from .views import (
     PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView,
-    CommentCreateView, CommentUpdateView, CommentDeleteView, PostByTagListView.as_View,
-    search_posts, 
+    CommentCreateView, CommentUpdateView, CommentDeleteView,
+    PostByTagListView.as_view,
+    search_posts,
 )
 
 urlpatterns = [
@@ -13,12 +14,12 @@ urlpatterns = [
     path('post/<int:pk>/edit/', PostUpdateView.as_view(), name='post-update'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
 
-    # 💬 Comment URLs (must match autograder)
+    # 💬 Comment URLs
     path('post/<int:pk>/comments/new/', CommentCreateView.as_view(), name='comment-create'),
     path('comment/<int:pk>/update/', CommentUpdateView.as_view(), name='comment-update'),
     path('comment/<int:pk>/delete/', CommentDeleteView.as_view(), name='comment-delete'),
 
-    # 🔍 Search and Tag URLs
+    # 🔍 Search and Tags
     path('search/', search_posts, name='search_posts'),
-    path('tags/<str:tag_name>/', posts_by_tag, name='posts_by_tag'),
+    path('tags/<slug:tag_slug>/', PostByTagListView.as_view(), name='posts_by_tag'),
 ]
