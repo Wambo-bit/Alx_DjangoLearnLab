@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (
     PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView,
-    CommentCreateView, CommentUpdateView, CommentDeleteView, PostByTagListView,
+    CommentCreateView, CommentUpdateView, CommentDeleteView, PostByTagListView.as_View,
     search_posts, 
 )
 
