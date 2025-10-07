@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -123,8 +124,8 @@ USE_TZ = True
 
 # Static files
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",  # optional global static directory
+STATICFILES_DIRS = [os.path.join(
+    BASE_DIR / "static"),  # optional global static directory
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"  # for collectstatic (deployment)
 
