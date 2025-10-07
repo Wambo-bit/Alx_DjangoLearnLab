@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import CommentCreateView
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -23,4 +24,9 @@ urlpatterns = [
 urlpatterns = [
     path('search/', views.search_posts, name='search_posts'),
     path('tags/<str:tag_name>/', views.posts_by_tag, name='posts_by_tag'),
+]
+
+urlpatterns = [
+    # other routes...
+    path('posts/<int:post_id>/comments/new/', CommentCreateView.as_view(), name='add_comment_class'),
 ]
