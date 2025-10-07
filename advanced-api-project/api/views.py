@@ -54,9 +54,6 @@ class BookCreateView(generics.CreateAPIView):
         print(f"Book created: {serializer.validated_data['title']}")
         serializer.save()
 
-
-
-
 # 4. Update an existing book
 class BookUpdateView(generics.UpdateAPIView):
     queryset = Book.objects.all()
