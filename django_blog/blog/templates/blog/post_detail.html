@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>{{ object.title }}</h2>
+  <p>{{ object.content }}</p>
+  <small>By {{ object.author }} on {{ object.published_date }}</small>
+
+  {% if user == object.author %}
+    <a href="{% url 'post-edit' object.pk %}" class="btn">Edit</a>
+    <a href="{% url 'post-delete' object.pk %}" class="btn">Delete</a>
+  {% endif %}
+
+  <hr>
+  <h3>Comments</h3>
+  {% for comment in object.comments.all %}
+    <div class="card" style="margin-bottom:10px;">
+      <p>{{ comment.content }}</p>
+      <small>— {{ comment.author }} on {{ comment.created_at }}</small>
+      {% if user == comment.author %}
+        <a href="{% url 'comment-edit' comment.pk %}" class="btn">Edit</a>
+        <a href="{% url 'comment-delete' comment.pk %}" class="btn">Delete</a>
+      {% endif %}
+    </div>
+  {% empty %}
+    <p>No comments yet.</p>
+  {% endfor %}
+
+  {% if user.is_authenticated %}
+    <h4>Leave a Comment</h4>
+    <form method="post" action="{% url 'add-comment' object.id %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn">Post Comment</button>
+    </form>
+  {% else %}
+    <p><a href="{% url 'login' %}">Login</a> to post a comment.</p>
+  {% endif %}
+{% endblock %}

@@ -17,3 +17,23 @@
 2. Go to `/posts/new/` to create a post.
 3. View posts at `/`.
 4. Edit or delete your posts through the post detail page.
+
+## Comment Functionality
+
+### Features
+- Users can comment on blog posts.
+- Comments are displayed under each post.
+- Only authenticated users can create comments.
+- Authors can edit or delete their own comments.
+
+### Files
+- `models.py` → Defines `Comment` model.
+- `forms.py` → Contains `CommentForm`.
+- `views.py` → CRUD views for comments.
+- `urls.py` → Routes for adding/editing/deleting comments.
+- `templates/blog/` → Comment-related templates.
+
+### Permissions
+- Only comment authors can edit/delete.
+- All users can read comments.
+- Non-authenticated users cannot comment.
